@@ -1,8 +1,8 @@
 from rest_framework.generics import *
 from rest_framework.viewsets import ModelViewSet
 
-from store.serializers import OrderItemSerializer
-from . models import OrderItem, Product
+from store.serializers import OrderItemSerializer, CustomerSerializer
+from . models import OrderItem, Product, Customer
 
 
 
@@ -18,7 +18,12 @@ class OrderItemDetail(RetrieveUpdateDestroyAPIView):
 
 class ProductViewSet(ModelViewSet):
     queryset = Product.objects.all()
-    serializer_class = Productser
+    serializer_class = ProductSerializer
+
+class CustomerView(ModelViewSet):
+    queryset = Customer.objects.all()
+    serializer_class = CustomerSerializer()
+    
 
 
 
