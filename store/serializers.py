@@ -34,6 +34,11 @@ class OrderItemSerializer(ModelSerializer):
         model = OrderItem
         fields = ['product', 'quantity', 'unit_price']
 
+class ReviewSerializer(ModelSerializer):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    name = models.Charfield(max_length=255)
+    description = models.TextFiled()
+    date = models.DateTimeField(auto_now_add=True)
 
 
 
@@ -49,38 +54,11 @@ class OrderItemSerializer(ModelSerializer):
 
 
 
-# from dataclasses import field
-# from decimal import Decimal
-# from rest_framework import serializers
-# from django.db.models import Count
-# from .models import Cart, CartItem, Collection, Customer, Order, Product, Review
 
 
-# class ProductSerializer(serializers.ModelSerializer):
-#     collection = serializers.StringRelatedField()
-#     class Meta:
-#         model = Product
-#         fields = ['id', 'title', 'unit_price', 'inventory', 'description', 'collection']
-    
-    
-# class CustomerSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Customer
-#         fields = ['first_name', 'last_name', 'email', 'phone']
 
 
-# class CollectionSerializer(serializers.ModelSerializer):
-#     products_count = serializers.IntegerField(read_only=True)
-#     class Meta:
-#         model = Collection
-#         fields = ['id', 'title', 'products_count', 'featured_product']
-        
 
-# class OrderSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Order
-#         fields = ['customer_first_name', 'id', 'placed_at', 'payment_status']
-        
 
 
 
@@ -129,36 +107,3 @@ class OrderItemSerializer(ModelSerializer):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# class ReviewSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Review
-#         fields = ['product', 'name', 'description', 'date']
-
-
-# class CartItemSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = CartItem
-#         fields = ['id', 'product', 'quantity']
-
-
-# class CartSerializer(serializers.ModelSerializer):
-#     # items = CartItemSerializer(many=True)
-#     id = serializers.UUIDField(read_only=True)
-#     class Meta:
-#         model = Cart
-#         fields = ['id']
