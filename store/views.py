@@ -24,7 +24,9 @@ class CustomerView(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer()
     
-
+classReviewVieSet(ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
 
 
 
